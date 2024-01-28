@@ -39,7 +39,7 @@ class Drawer(Graph):
         if title is not None:
             self.axis.set_title(title)
 
-    def draw_graph(self, chart_caption: bool = True):
+    def draw_graph(self, chart_caption: bool = False):
         """ Отрисовка (вызывается в конце).
         :param chart_caption: отображать label/имена графиков."""
         # Рисуем сетку
