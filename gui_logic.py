@@ -1,20 +1,22 @@
-from gui import Ui_Dialog
-
-from graph import Graph
-from drawer import Drawer as drawer
-
 import matplotlib
+from PyQt5 import QtWidgets
+
+from gui import Ui_Dialog
+from drawing.graph import Graph
+from drawing.drawer import Drawer as drawer
 
 matplotlib.use('TkAgg')
 
 
-# КЛАСС АЛГОРИТМА ПРИЛОЖЕНИЯ
 class GuiProgram(Ui_Dialog):
+    """ Класс контроллер - интерпретирует действия пользователя """
 
-    def __init__(self, dialog):
-        # Создаем окно
+    def __init__(self, dialog: QtWidgets.QDialog) -> None:
+        """ Вызывается при создании нового объекта класса """
+        # Создание окна
         Ui_Dialog.__init__(self)
-        self.setupUi(dialog)  # Устанавливаем пользовательский интерфейс
+        # Установка пользовательского интерфейс
+        self.setupUi(dialog)
 
         # ПОЛЯ КЛАССА
         # Параметры 1 графика
@@ -24,10 +26,11 @@ class GuiProgram(Ui_Dialog):
         )
 
         # ДЕЙСТВИЯ ПРИ ВКЛЮЧЕНИИ
-        # Для примера, от рисуем первичные данные
+        # Для примера, рисуем первичные данные
         self.draw()
 
     def draw(self):
+        """ Рисуем график """
         x = list(range(5))
         y = list(range(5))
         drawer.updating_gas_graph(self.graph_1, x, y)
