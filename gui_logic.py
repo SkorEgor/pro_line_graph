@@ -2,7 +2,6 @@ import matplotlib
 from PyQt5 import QtWidgets
 
 from gui import Ui_Dialog
-from drawing.graph import Graph
 from drawing.drawer import Drawer as drawer
 
 matplotlib.use('TkAgg')
@@ -20,7 +19,7 @@ class GuiProgram(Ui_Dialog):
 
         # ПОЛЯ КЛАССА
         # Параметры 1 графика
-        self.graph_1 = Graph(
+        self.drawer_1 = drawer(
             layout=self.layout_plot_1,
             widget=self.widget_plot_1
         )
@@ -33,4 +32,4 @@ class GuiProgram(Ui_Dialog):
         """ Рисуем график """
         x = list(range(5))
         y = list(range(5))
-        drawer.updating_gas_graph(self.graph_1, x, y)
+        self.drawer_1.draw_line(x, y)
